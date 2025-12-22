@@ -1,0 +1,214 @@
+/* ===============================
+   GLOBAL RESET FOR LOGIN PAGE
+================================ */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* ===============================
+   MAIN WRAPPER
+================================ */
+.login-wrapper {
+  display: flex;
+  width: 100%;
+  height: 100vh;
+}
+
+/* ===============================
+   LEFT SECTION (FORM)
+================================ */
+.login-left {
+  width: 45%;
+  padding: 60px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: #ffffff;
+}
+
+.brand {
+  text-align: center;
+  color: #2563eb; /* blue */
+  font-weight: bold;
+  margin-bottom: 40px;
+  font-size: 30px;
+
+}
+
+.login-left h1 {
+  margin-bottom: 10px;
+  font-size: 28px;
+}
+
+.subtitle {
+  color: #6b7280;
+  margin-bottom: 30px;
+  font-size: 15px;
+}
+
+.login-left label {
+  font-size: 14px;
+  margin-bottom: 6px;
+}
+
+.login-left input {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 18px;
+  border-radius: 6px;
+  border: 1px solid #d1d5db;
+  font-size: 14px;
+}
+
+.login-left input:focus {
+  outline: none;
+  border-color: #3b82f6;
+}
+
+/* ===============================
+   OPTIONS ROW
+================================ */
+.options {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 14px;
+  margin-bottom: 20px;
+}
+
+.options label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.link {
+  color: #2563eb;
+  cursor: pointer;
+}
+
+/* ===============================
+   BUTTONS
+================================ */
+.signin-btn {
+  background-color: #3b82f6;
+  color: white;
+  border: none;
+  padding: 12px;
+  border-radius: 6px;
+  font-size: 15px;
+  margin-bottom: 15px;
+  cursor: pointer;
+}
+
+.signin-btn:hover {
+  background-color: #2563eb;
+}
+
+.google-btn {
+  background-color: #ffffff;
+  border: 1px solid #d1d5db;
+  padding: 10px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  cursor: pointer;
+}
+
+.google-btn img {
+  width: 18px;
+}
+
+/* ===============================
+   SIGN UP TEXT
+================================ */
+.signup-text {
+  margin-top: 20px;
+  font-size: 14px;
+}
+
+/* ===============================
+   RIGHT SECTION (IMAGE – NO TOP SPACE)
+================================ */
+.login-right {
+  width: 55%;
+  height: 100vh;
+  background-color: #eff6ff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;   /* ✅ prevents gaps */
+}
+
+.login-image {
+  width: 90%;
+  height: 100%;
+  object-fit: cover;  
+  border-radius: 8px;
+}
+/* ===============================
+   INPUT PLACEHOLDER STYLING
+================================ */
+
+/* Normal input text */
+.login-left input {
+  font-size: 15px;
+  padding: 12px 14px;
+}
+
+/* Placeholder text */
+.login-left input::placeholder {
+  font-size: 15px;        /* slightly smaller than input text */
+  line-height: 1.6;       /* 👈 font height effect */
+  color: #9aa0a6;        
+  font-weight: 500;
+}
+.custom-alert {
+  background-color: #efe9fb;
+  color: #4b2fa8;
+  padding: 12px 14px;
+  border-radius: 6px;
+  font-size: 14px;
+  margin-bottom: 20px;
+  border-left: 4px solid #6a4bc3;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ===============================
+   RESPONSIVE (MOBILE)
+================================ */
+@media (max-width: 900px) {
+  .login-wrapper {
+    flex-direction: column;
+  }
+
+  .login-left {
+    width: 100%;
+    padding: 40px;
+  }
+
+  .login-right {
+    width: 100%;
+    height: 300px;
+  }
+
+  .login-image {
+    width: 90%;
+  }
+}

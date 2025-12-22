@@ -1,0 +1,344 @@
+/* =========================================
+   DASHBOARD LAYOUT & THEME
+   ========================================= */
+
+.dashboard-wrapper {
+  width: 100%;
+  min-height: 100vh;
+  background-color: #eff6ff; /* Light blue matching login-right background */
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.dashboard-body {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 30px 20px; /* Spacing below the fixed Navbar */
+}
+
+/* =========================================
+   STATS ROW (Top Cards)
+   ========================================= */
+
+.stats-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  margin-bottom: 30px;
+}
+
+.stat-box {
+  background: white;
+  padding: 25px;
+  border-radius: 12px;
+  border: 1px solid #d1d5db;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s;
+}
+
+.stat-box:hover {
+  transform: translateY(-3px);
+}
+
+.stat-box .subtitle {
+  color: #6b7280;
+  font-size: 14px;
+  margin-bottom: 5px;
+}
+
+.stat-box h3 {
+  font-size: 28px;
+  color: #111827;
+  margin: 0;
+}
+
+/* Featured Date Box (Blue) */
+.promo-box {
+  background: #3b82f6; /* Matching your sign-in button color */
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  border: none;
+}
+
+/* =========================================
+   DATE EDITOR STYLES
+   ========================================= */
+
+.edit-date-container {
+  display: flex;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.date-input {
+  padding: 6px;
+  border-radius: 6px;
+  border: 1px solid #ffffff;
+  font-family: inherit;
+  font-size: 14px;
+  outline: none;
+}
+
+.save-date-btn {
+  background-color: white;
+  color: #3b82f6;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: opacity 0.2s;
+}
+
+.save-date-btn:hover {
+  opacity: 0.9;
+}
+
+.view-date-container strong {
+  font-size: 18px;
+  text-decoration: underline;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.view-date-container strong:hover {
+  color: #dbeafe;
+}
+
+/* =========================================
+   MAIN BOOKING AREA
+   ========================================= */
+
+.booking-main {
+  background: white;
+  padding: 40px;
+  border-radius: 15px;
+  border: 1px solid #d1d5db;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+  min-height: 400px;
+}
+
+.booking-header {
+  border-bottom: 2px solid #eff6ff;
+  padding-bottom: 15px;
+  margin-bottom: 25px;
+}
+
+.booking-header h1 {
+  font-size: 26px;
+  color: #2563eb; /* Brand Blue */
+  margin-bottom: 5px;
+}
+
+.booking-header .subtitle {
+  color: #6b7280;
+}
+
+/* Slot Cards Grid */
+.slots-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 20px;
+}
+
+/* =========================================
+   MESSAGES & NOTIFICATIONS
+   ========================================= */
+
+.no-slots-message {
+  grid-column: 1 / -1; /* Spans across all columns */
+  text-align: center;
+  padding: 60px 20px;
+  background-color: #fff1f2; /* Light Red */
+  border: 1px dashed #f43f5e;
+  border-radius: 12px;
+  color: #be123c;
+}
+
+.no-slots-message h3 {
+  margin-bottom: 10px;
+  font-size: 20px;
+}
+
+/* =========================================
+   BOOKING CONFIRMATION UI
+   ========================================= */
+
+.confirmation-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px 0;
+}
+
+.confirmation-card {
+  text-align: center;
+  max-width: 450px;
+  width: 100%;
+  animation: slideUp 0.4s ease-out;
+}
+
+.success-icon {
+  width: 70px;
+  height: 70px;
+  background-color: #10b981; /* Success Green */
+  color: white;
+  font-size: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  margin: 0 auto 20px;
+  box-shadow: 0 4px 10px rgba(16, 185, 129, 0.2);
+}
+
+.receipt-details {
+  background-color: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  padding: 25px;
+  margin: 25px 0;
+  text-align: left;
+}
+
+.receipt-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 12px 0;
+  border-bottom: 1px solid #f1f5f9;
+}
+
+.receipt-row:last-child {
+  border-bottom: none;
+}
+
+.receipt-row span {
+  color: #64748b;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.receipt-row strong {
+  color: #1e293b;
+  font-size: 16px;
+}
+
+/* Reusing your Login button style for Confirmation screen */
+.signin-btn {
+  background-color: #2563eb;
+  color: white;
+  width: 100%;
+  padding: 14px;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.signin-btn:hover {
+  background-color: #1d4ed8;
+}
+/* Full Slots Message Styling */
+.full-slots-message {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 50px 20px;
+  background-color: #fffbeb; /* Light amber/yellow */
+  border: 1px solid #f59e0b; /* Amber border */
+  border-radius: 12px;
+  color: #92400e; /* Dark amber text */
+  animation: fadeIn 0.3s ease-in;
+}
+
+.warning-icon {
+  font-size: 40px;
+  margin-bottom: 15px;
+}
+
+.full-slots-message h3 {
+  margin-bottom: 8px;
+  font-size: 22px;
+}
+
+.full-slots-message p {
+  font-size: 15px;
+  margin: 5px 0;
+}
+.history-card {
+  background: white;
+  padding: 15px 20px;
+  border-radius: 10px;
+  border: 1px solid #e2e8f0;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.status-badge {
+  background: #dcfce7;
+  color: #166534;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.back-btn {
+  background: none;
+  border: none;
+  color: #2563eb;
+  cursor: pointer;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+.history-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
+
+.status-confirmed {
+  background: #dcfce7;
+  color: #166534;
+  font-size: 12px;
+  font-weight: bold;
+  padding: 4px 10px;
+  border-radius: 20px;
+}
+
+.back-link {
+  background: none;
+  border: none;
+  color: #2563eb;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  padding: 0;
+}
+
+.count-badge {
+  background: #ef4444;
+  color: white;
+  font-size: 10px;
+  padding: 2px 6px;
+  border-radius: 10px;
+  margin-left: 5px;
+  vertical-align: middle;
+}
+/* Animations */
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
