@@ -5,32 +5,43 @@ import cors from "cors";
 import { fileURLToPath } from "url";
 
 const app = express();
-const PORT = 5000;
+
+// ✅ Render port
+const PORT = process.env.PORT || 5000;
 
 // Fix __dirname for ES modules
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-app.use(cors());
+// ✅ CORS
+app.use(
+  cors({
+    origin: [
+      "http://localhost:5173",
+      "https://subtle-pasca-09fa80.netlify.app",
+    ],
+    methods: ["GET", "POST"],
+    credentials: true,
+  })
+);
+
 app.use(express.json());
 
 const USERS_FILE = path.join(__dirname, "users.json");
 
-// Helper: Read users
+// Helpers
 const readUsers = () => {
   if (!fs.existsSync(USERS_FILE)) {
     fs.writeFileSync(USERS_FILE, JSON.stringify([]));
   }
-  const data = fs.readFileSync(USERS_FILE, "utf-8");
-  return JSON.parse(data);
+  return JSON.parse(fs.readFileSync(USERS_FILE, "utf-8"));
 };
 
-// Helper: Write users
 const writeUsers = (users) => {
   fs.writeFileSync(USERS_FILE, JSON.stringify(users, null, 2));
 };
 
-// ✅ LOGIN / REGISTER API
+// ✅ LOGIN / REGISTER (single API)
 app.post("/api/login", (req, res) => {
   const { email, name, picture } = req.body;
 
@@ -42,7 +53,6 @@ app.post("/api/login", (req, res) => {
   }
 
   let users = readUsers();
-
   let user = users.find((u) => u.email === email);
 
   if (!user) {
@@ -54,23 +64,22 @@ app.post("/api/login", (req, res) => {
       role: email === "admin@gmail.com" ? "admin" : "user",
       createdAt: new Date().toISOString(),
     };
-
     users.push(user);
     writeUsers(users);
   }
 
-  return res.json({
+  res.json({
     success: true,
     message: "Login successful",
     user,
   });
 });
 
-// Health check
+// ✅ Health check
 app.get("/", (req, res) => {
-  res.send("API is running 🚀");
+  res.send("Backend is running successfully 🚀");
 });
 
 app.listen(PORT, () => {
-  console.log(`✅ Server running on http://localhost:${PORT}`);
+  console.log(`✅ Server running on port ${PORT}`);
 });

@@ -2,11 +2,12 @@ import { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import "./signup.css";
 
+const API_URL = "https://bigbucks-i87n.onrender.com";
+
 function Signup({ setUserInfo, setRole }) {
-  const { state } = useLocation(); // email passed from login (optional)
+  const { state } = useLocation();
   const navigate = useNavigate();
 
-  // ✅ State for email so it can be edited
   const [email, setEmail] = useState(state?.email || "");
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");
@@ -23,10 +24,13 @@ function Signup({ setUserInfo, setRole }) {
     }
 
     try {
-      const res = await fetch("http://localhost:5000/api/signup", {
+      const res = await fetch(`${API_URL}/api/login`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email, password }), // store email + password
+        body: JSON.stringify({
+          email,
+          name: email.split("@")[0], // required by backend
+        }),
       });
 
       const data = await res.json();
@@ -39,9 +43,8 @@ function Signup({ setUserInfo, setRole }) {
       setUserInfo(data.user);
       setRole(data.user.role);
 
-      showMessage("Signup completed successfully!"); // ✅ success message
+      showMessage("Signup completed successfully!");
 
-      // Redirect to user dashboard after 1s
       setTimeout(() => navigate("/user"), 1000);
     } catch (err) {
       showMessage("Server not running");
@@ -52,9 +55,9 @@ function Signup({ setUserInfo, setRole }) {
     <div className="signup-wrapper">
       <div className="signup-card">
         <h2>Create Account</h2>
+
         {message && <div className="custom-alert">{message}</div>}
 
-        {/* Editable email input */}
         <input
           type="email"
           placeholder="Enter your email"

@@ -1,38 +1,35 @@
 import React, { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import './navbar.css';
 
-const Navbar = ({ role, user, setRole, onViewChange, bookingCount }) => {
+const Navbar = ({ role, user, setRole, bookingCount }) => {
   const [showProfile, setShowProfile] = useState(false);
+  const navigate = useNavigate();
 
   const handleLogout = () => {
     setRole(""); 
+    navigate("/login"); // Redirect after logout
   };
 
   return (
     <nav className="custom-navbar">
       <div className="nav-container">
-        <div className="nav-logo" onClick={() => onViewChange("available")} style={{cursor: 'pointer'}}>
+        <div className="nav-logo" onClick={() => navigate(role === "admin" ? "/admin" : "/booking")} style={{cursor: 'pointer'}}>
           <span className="logo-text">SmartBook</span>
         </div>
 
         <ul className="nav-links">
-          <li><a href="#home" onClick={() => onViewChange("available")}>Home</a></li>
           {role === "admin" ? (
             <>
-              <li><a href="#manage">Manage Slots</a></li>
-              <li><a href="#analytics">Analytics</a></li>
+              <li><Link to="/admin">Manage Slots</Link></li>
+              <li><Link to="/admin">Analytics</Link></li>
             </>
           ) : (
-            <>
-              <li>
-                <a href="#my-bookings" onClick={(e) => {
-                  e.preventDefault();
-                  onViewChange("history");
-                }}>
-                  My Bookings {bookingCount > 0 && <span className="count-badge">{bookingCount}</span>}
-                </a>
-              </li>
-            </>
+            <li>
+              <Link to="/booking">
+                My Bookings {bookingCount > 0 && <span className="count-badge">{bookingCount}</span>}
+              </Link>
+            </li>
           )}
         </ul>
 
@@ -64,3 +61,4 @@ const Navbar = ({ role, user, setRole, onViewChange, bookingCount }) => {
 };
 
 export default Navbar;
+
